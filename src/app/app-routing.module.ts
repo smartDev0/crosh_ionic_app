@@ -49,6 +49,13 @@ const routes: Routes = [
         (m) => m.RegisterQuestionPageRoutingModule
       ),
   },
+  {
+    path: "done",
+    loadChildren: () =>
+      import("./pages/auth/done/done.module").then(
+        (m) => m.DonePageRoutingModule
+      ),
+  },
 ];
 
 @NgModule({

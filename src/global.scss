@@ -55,3 +55,12 @@
 .login-form {
   padding: 0px 50px;
 }
+.close-icon {
+  width: 25px;
+  position: absolute;
+  top: 40px;
+  left: 18px;
+  cursor: pointer;
+  outline: none;
+  z-index: 10;
+}

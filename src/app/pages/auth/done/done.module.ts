@@ -4,11 +4,11 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 
-import { LoginComponent } from "./login.component";
+import { DoneComponent } from "./done.component";
 const routes: Routes = [
   {
     path: "",
-    component: LoginComponent,
+    component: DoneComponent,
   },
 ];
 
@@ -20,6 +20,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   exports: [RouterModule],
-  declarations: [LoginComponent],
+  declarations: [DoneComponent],
 })
-export class LoginPageRoutingModule {}
+export class DonePageRoutingModule {}
