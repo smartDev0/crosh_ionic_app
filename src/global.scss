@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -24,3 +24,31 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.logo-img {
+  padding-top: 60px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.welcome-button-group {
+  padding: 0px 50px;
+}
+.welcome-button {
+  width: 100%;
+  height: 60px;
+  background-color: #d6d6f7;
+  border-radius: 5px;
+  border: 2px solid grey;
+  outline: none;
+  font-size: 16px;
+  font-weight: bold;
+}
