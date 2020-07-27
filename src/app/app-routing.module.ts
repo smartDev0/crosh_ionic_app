@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
-
+import { AdminLayoutComponent } from "./pages/layout/admin-layout/admin-layout.component";
 const routes: Routes = [
   {
     path: "",
@@ -55,6 +55,19 @@ const routes: Routes = [
       import("./pages/auth/done/done.module").then(
         (m) => m.DonePageRoutingModule
       ),
+  },
+  {
+    path: "home",
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: "dashboard",
+        loadChildren: () =>
+          import("./pages/home/dashboard/dashboard.module").then(
+            (m) => m.DashboardPageRoutingModule
+          ),
+      },
+    ],
   },
 ];
 
