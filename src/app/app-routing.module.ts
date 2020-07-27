@@ -21,6 +21,13 @@ const routes: Routes = [
         (m) => m.LoginPageRoutingModule
       ),
   },
+  {
+    path: "verify",
+    loadChildren: () =>
+      import("./pages/auth/verify/verify.module").then(
+        (m) => m.VerifyPageRoutingModule
+      ),
+  },
 ];
 
 @NgModule({

@@ -10,7 +10,6 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit() {}
   goLogin() {
-    console.log("....");
     this.router.navigate(["/login"]);
   }
 }

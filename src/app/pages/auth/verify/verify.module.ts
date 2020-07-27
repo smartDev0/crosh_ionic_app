@@ -1,14 +1,14 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { LoginComponent } from "./login.component";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
+import { VerifyComponent } from "./verify.component";
 
 const routes: Routes = [
   {
     path: "",
-    component: LoginComponent,
+    component: VerifyComponent,
   },
 ];
 
@@ -21,4 +21,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class LoginPageRoutingModule {}
+export class VerifyPageRoutingModule {}
