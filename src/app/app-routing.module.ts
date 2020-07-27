@@ -28,6 +28,27 @@ const routes: Routes = [
         (m) => m.VerifyPageRoutingModule
       ),
   },
+  {
+    path: "introduction",
+    loadChildren: () =>
+      import("./pages/auth/register-introduce/register-introduce.module").then(
+        (m) => m.RegisterIntroductionPageRoutingModule
+      ),
+  },
+  {
+    path: "register",
+    loadChildren: () =>
+      import("./pages/auth/register/register.module").then(
+        (m) => m.RegisterPageRoutingModule
+      ),
+  },
+  {
+    path: "question",
+    loadChildren: () =>
+      import("./pages/auth/register-question/register-question.module").then(
+        (m) => m.RegisterQuestionPageRoutingModule
+      ),
+  },
 ];
 
 @NgModule({

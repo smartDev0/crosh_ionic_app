@@ -1,3 +1,78 @@
-<p>
-  register works!
-</p>
+<ion-content fullscreen>
+  <div style="padding-top: 60px;padding-bottom: 10px;">
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label>
+          <h1 style="color: grey;"><strong>INSCRIPTION</strong></h1>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <ion-row>
+    <ion-col class="text-center">
+      <ion-label>
+        <h2 style="color: #3b3b70;"><strong>Laissez nous faire votre
+            <div>
+              connaissance ...
+            </div>
+          </strong></h2>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+  <div class="login-form" mode="ios">
+    <ion-row mode="md">
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Prénom</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row mode="md">
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Nom</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row mode="md">
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row mode="md">
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Mot de passe</ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row mode="md">
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">
+            Confiremez votre mot de passe
+          </ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-item class="ion-item" no-lines lines="none">
+      <ion-label>Vous acceptez nos RGPD. Celan'implique aucun engagement de votre part ..</ion-label>
+      <ion-checkbox color="primary" slot="start"></ion-checkbox>
+    </ion-item>
+    <br>
+
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" routerLink="/question" routerDirection="forward">Confirmer mon inscription</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

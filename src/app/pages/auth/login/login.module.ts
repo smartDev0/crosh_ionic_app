@@ -20,5 +20,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   exports: [RouterModule],
+  declarations: [LoginComponent],
 })
 export class LoginPageRoutingModule {}

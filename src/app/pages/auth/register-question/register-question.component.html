@@ -1,3 +1,58 @@
-<p>
-  register-question works!
-</p>
+<ion-content fullscreen>
+  <div style="padding-top: 60px;padding-bottom: 10px;">
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label>
+          <h1 style="color: grey;"><strong>INSCRIPTION</strong></h1>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <ion-row>
+    <ion-col class="text-center">
+      <ion-label>
+        <h2 style="color: #3b3b70;">
+          <strong>
+            Dites-nous en plus sur vous ...
+          </strong>
+        </h2>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+  <br>
+  <br>
+  <br>
+  <div class="login-form" mode="ios">
+    <ion-row mode="md">
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Question 1</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label>
+          <h2 style="color: #3b3b70;">
+            <strong>
+             Definir listes des infors a demander dans un premire temps
+             <div>
+               +
+             </div>
+             infos plus complexe dans un second temps via l'espace perso
+            </strong>
+          </h2>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" routerLink="/verify" routerDirection="forward">Valider</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

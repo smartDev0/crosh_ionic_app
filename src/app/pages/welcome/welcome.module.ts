@@ -21,5 +21,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   exports: [RouterModule],
+  declarations: [WelcomeComponent],
 })
 export class WelcomePageRoutingModule {}

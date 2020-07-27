@@ -3,12 +3,11 @@ import { RouterModule, Routes } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
-import { VerifyComponent } from "./verify.component";
-
+import { RegisterComponent } from "./register.component";
 const routes: Routes = [
   {
     path: "",
-    component: VerifyComponent,
+    component: RegisterComponent,
   },
 ];
 
@@ -20,6 +19,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   exports: [RouterModule],
-  declarations: [VerifyComponent],
+  declarations: [RegisterComponent],
 })
-export class VerifyPageRoutingModule {}
+export class RegisterPageRoutingModule {}
