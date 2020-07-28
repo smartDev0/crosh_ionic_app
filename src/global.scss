@@ -178,3 +178,18 @@
   font-weight: bold;
   cursor: pointer;
 }
+.crosh-link {
+  border: 2px solid grey;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px 15px;
+  color: grey;
+}
+.arrow-icon {
+  font-size: 30px;
+  position: absolute;
+  right: 13px;
+  margin-top: -40px;
+}
