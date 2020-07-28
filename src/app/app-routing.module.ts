@@ -139,6 +139,13 @@ const routes: Routes = [
         "./pages/account/profile-information/profile-information.module"
       ).then((m) => m.ProfileInformationPageRoutingModule),
   },
+  {
+    path: "profile-incoming",
+    loadChildren: () =>
+      import("./pages/account/profile-incoming/profile-incoming.module").then(
+        (m) => m.ProfileIncomingPageRoutingModule
+      ),
+  },
 ];
 
 @NgModule({
