@@ -10,7 +10,7 @@ export class ProfileIncomingComponent implements OnInit {
   constructor(private commonService: CommonService) {
     this.commonService.currentStatus.subscribe((item) => {
       // this.ionViewWillEnter();
-      console.log("????????");
+      console.log("????????", item);
     });
     if (localStorage.getItem("pensionActive") == "1") {
       this.pensionActive = true;

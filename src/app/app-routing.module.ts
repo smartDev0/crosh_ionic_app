@@ -160,6 +160,11 @@ const routes: Routes = [
         "./pages/account/pensions/pension-supplyment/pension-supplyment.module"
       ).then((m) => m.PensionSupplymentPageRoutingModule),
   },
+  {
+    path: "profile-social",
+    loadChildren:
+      "./pages/account/social/social.module#SocialPageRoutingModule",
+  },
 ];
 
 @NgModule({

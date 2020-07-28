@@ -1,0 +1,133 @@
+<ion-content fullscreen mode="ios">
+  <br>
+  <br>
+  <ion-row>
+    <ion-col class="text-center">
+      <ion-label class="form-title">
+       Percevez-vous de
+        <div>
+          revenus sociaux ?
+        </div>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+  <br>
+  <ion-row>
+    <ion-col size="6">
+      <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(1)" *ngIf="!isOneActive">
+        CAF
+      </div>
+      <div class="supplyment-checkbox active d-flex-v-center" (click)="onChangeState(1)" *ngIf="isOneActive">
+        CAF
+      </div>
+    </ion-col>
+    <ion-col size="6">
+      <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(2)" *ngIf="!isSecondActive">
+        APL
+      </div>
+      <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(2)" *ngIf="isSecondActive">
+        APL
+      </div>
+    </ion-col>
+    <ion-col size="6">
+      <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(3)" *ngIf="!isThreeActive">
+        RSA
+      </div>
+      <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(3)" *ngIf="isThreeActive">
+        RSA
+      </div>
+    </ion-col>
+    <ion-col size="6">
+      <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(4)" *ngIf="!isFourActive">
+        Autre aide ?
+      </div>
+      <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(4)" *ngIf="isFourActive">
+        Autre aide ?
+      </div>
+    </ion-col>
+  </ion-row>
+  <div style="padding: 15px;" *ngIf="isOneActive">
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="form-title">
+          Revenu CAF:
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-text">Montant percu ?</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-value">
+          {{monthValue}} €
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-range min="0" max="360000" class="range" step="100" value="{{monthValue}}"
+          (ionChange)="onChangeGetMonthValue($event)">
+        </ion-range>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-text">Allocation mensuel ?</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-value">
+          {{remainMonthValue}} €
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-range min="0" max="4400" class="range" step="100" value="{{remainMonthValue}}"
+          (ionChange)="onChangeGetRemainValue($event)">
+        </ion-range>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-text">Rente trimestrielle ?</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-value">
+          {{timerValue}} €
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-range min="0" max="13200" class="range" step="100" value="{{timerValue}}"
+          (ionChange)="onChangeGetTimerValue($event)">
+        </ion-range>
+      </ion-col>
+    </ion-row>
+    <br>
+  </div>
+ 
+  <ion-row *ngIf="isOneActive">
+    <ion-col>
+      <div class="d-flex" style="display: flex;justify-content: space-between;">
+        <div class="arrow-left d-flex-v-center" routerLink="/profile-incoming" routerDirection="forward">
+          <ion-icon name="arrow-back" mode="md"></ion-icon>
+        </div>
+        <div class="arrow-right d-flex-v-center" (click)="goIncomingPage()">
+          <ion-icon name="checkmark" mode="md"></ion-icon>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+  <br>
+  <br>
+</ion-content>

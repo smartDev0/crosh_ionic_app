@@ -20,7 +20,7 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col size="6" *ngIf="!pensionActive">
+    <!-- <ion-col size="6" *ngIf="!pensionActive">
       <ion-card mode="ios" class="incoming-card d-flex-v-center" routerLink="/pension-type" routerDirection="forward">
         <ion-card-content class="text-center">
           <div class="card-value">
@@ -31,8 +31,8 @@
           </div>
         </ion-card-content>
       </ion-card>
-    </ion-col>
-     <ion-col size="6" *ngIf="pensionActive">
+    </ion-col> -->
+     <ion-col size="6" >
       <ion-card mode="ios" class="incoming-card incoming-active d-flex-v-center" routerLink="/pension-type" routerDirection="forward">
         <ion-card-content class="text-center">
           <div class="card-value">
@@ -55,7 +55,7 @@
       </ion-card>
     </ion-col>
     <ion-col size="6">
-      <ion-card mode="ios" class="incoming-card  d-flex-v-center">
+      <ion-card mode="ios" class="incoming-card  d-flex-v-center" routerLink="/profile-social" routerDirection="forward">
         <ion-card-content class="text-center">
           <div class="card-value">
             Revenus
