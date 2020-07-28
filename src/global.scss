@@ -177,6 +177,13 @@
   color: #8181e8;
   font-weight: bold;
   cursor: pointer;
+  outline: none;
+}
+.profile-card {
+  // min-height: 150px;
+  margin: 10px 15px;
+  background-color: #d9d9f9;
+  outline: none;
 }
 .crosh-link {
   border: 2px solid grey;
@@ -193,4 +200,10 @@
   position: absolute;
   right: 13px;
   margin-top: -40px;
+}
+.profile-card-text {
+  font-size: 14px;
+  font-weight: bold;
+  color: #3b3b70;
+  line-height: 30px;
 }

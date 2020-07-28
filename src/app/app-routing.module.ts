@@ -132,6 +132,13 @@ const routes: Routes = [
         (m) => m.CroshSecurityPageRoutingModule
       ),
   },
+  {
+    path: "profile-information",
+    loadChildren: () =>
+      import(
+        "./pages/account/profile-information/profile-information.module"
+      ).then((m) => m.ProfileInformationPageRoutingModule),
+  },
 ];
 
 @NgModule({
