@@ -93,6 +93,7 @@
   margin: 10px 5px;
   background-color: #d9d9f9;
   outline: none;
+  cursor: pointer;
 }
 .project-card ion-card-content {
   padding: 15px;
@@ -152,4 +153,14 @@
   font-size: 20px;
   font-weight: bold;
   color: #3b3b70;
+}
+.project-detail-label {
+  font-size: 18px;
+  color: #3939ad;
+  font-weight: bold;
+}
+.project-detail-text {
+  font-size: 17px;
+  color: grey;
+  font-weight: bold;
 }
