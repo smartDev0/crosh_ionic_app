@@ -140,6 +140,13 @@ const routes: Routes = [
       ).then((m) => m.ProfileInformationPageRoutingModule),
   },
   {
+    path: "profile-information-done",
+    loadChildren: () =>
+      import(
+        "./pages/account/profile-information-done/profile-infromation-done.module"
+      ).then((m) => m.ProfileInformationDonePageRoutingModule),
+  },
+  {
     path: "profile-incoming",
     loadChildren: () =>
       import("./pages/account/profile-incoming/profile-incoming.module").then(
