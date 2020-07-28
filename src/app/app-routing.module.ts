@@ -57,6 +57,20 @@ const routes: Routes = [
       ),
   },
   {
+    path: "my-heritage",
+    loadChildren: () =>
+      import("./pages/home/my-heritage/my-heritage.module").then(
+        (m) => m.MyHeritagePageRoutingModule
+      ),
+  },
+  {
+    path: "crosh-heritage",
+    loadChildren: () =>
+      import("./pages/home/crosh-heritage/crosh-heritage.module").then(
+        (m) => m.CroshHeritagePageRoutingModule
+      ),
+  },
+  {
     path: "home",
     component: AdminLayoutComponent,
     children: [
