@@ -25,6 +25,9 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+ion-content {
+  background-color: white;
+}
 .logo-img {
   padding-top: 60px;
   padding-bottom: 30px;
