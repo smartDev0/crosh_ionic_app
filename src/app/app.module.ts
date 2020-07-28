@@ -9,6 +9,7 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { AdminLayoutComponent } from "./pages/layout/admin-layout/admin-layout.component";
+import { CommonService } from "./service/common.service";
 @NgModule({
   declarations: [AppComponent, AdminLayoutComponent],
   entryComponents: [],
@@ -17,6 +18,7 @@ import { AdminLayoutComponent } from "./pages/layout/admin-layout/admin-layout.c
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    CommonService,
   ],
   bootstrap: [AppComponent],
 })

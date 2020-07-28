@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
-
+import { CommonService } from "../../../../service/common.service";
 @Component({
   selector: "app-pension-supplyment",
   templateUrl: "./pension-supplyment.component.html",
@@ -19,7 +19,8 @@ export class PensionSupplymentComponent implements OnInit {
   public monthValue;
   public remainMonthValue;
   public timerValue;
-  constructor(private router: Router) {
+
+  constructor(private router: Router, private commonService: CommonService) {
     this.monthValue = 220000;
     this.remainMonthValue = 2200;
     this.timerValue = 6600;
@@ -67,6 +68,10 @@ export class PensionSupplymentComponent implements OnInit {
     this.timerValue = event.target.value;
   }
   goIncomingPage() {
-    this.router.navigate(["/profile-incoming"]);
+    this.router.navigateByUrl("/profile-incoming");
+    this.commonService.changeStatus();
+    this.commonService.pensionActive = true;
+    localStorage.setItem("pensionActive", "1");
+    // this.commonService.filter("Register click");
   }
 }

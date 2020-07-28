@@ -186,7 +186,7 @@
   outline: none;
 }
 .incoming-card {
-  min-height: 120px;
+  min-height: 130px;
   margin: 10px 5px;
   background-color: #d9d9f9;
   outline: none;
@@ -320,4 +320,7 @@
 .active {
   background-color: #6363f3;
   color: white;
+}
+.incoming-active {
+  background-color: #a2dfa2;
 }

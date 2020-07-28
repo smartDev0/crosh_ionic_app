@@ -5,6 +5,7 @@ import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 
 import { ProfileIncomingComponent } from "./profile-incoming.component";
+import { CommonService } from "../../../service/common.service";
 const routes: Routes = [
   {
     path: "",
@@ -21,5 +22,6 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
   declarations: [ProfileIncomingComponent],
+  providers: [CommonService],
 })
 export class ProfileIncomingPageRoutingModule {}
