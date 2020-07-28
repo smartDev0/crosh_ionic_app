@@ -102,6 +102,13 @@ const routes: Routes = [
             (m) => m.ProjectPageRoutingModule
           ),
       },
+      {
+        path: "profile",
+        loadChildren: () =>
+          import("./pages/account/profile/profile.module").then(
+            (m) => m.ProfilePageRoutingModule
+          ),
+      },
     ],
   },
 ];
