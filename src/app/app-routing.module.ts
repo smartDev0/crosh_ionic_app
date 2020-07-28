@@ -161,6 +161,27 @@ const routes: Routes = [
       ).then((m) => m.PensionSupplymentPageRoutingModule),
   },
   {
+    path: "received",
+    loadChildren: () =>
+      import(
+        "./pages/account/incoming-investment/received/received.module"
+      ).then((m) => m.ReceivedPageRoutingModule),
+  },
+  {
+    path: "investment",
+    loadChildren: () =>
+      import(
+        "./pages/account/incoming-investment/investment/investment.module"
+      ).then((m) => m.InvestmentPageRoutingModule),
+  },
+  {
+    path: "investment-more",
+    loadChildren: () =>
+      import(
+        "./pages/account/incoming-investment/investment-more/investment-more.module"
+      ).then((m) => m.InvestmentMorePageRoutingModule),
+  },
+  {
     path: "profile-social",
     loadChildren:
       "./pages/account/social/social.module#SocialPageRoutingModule",

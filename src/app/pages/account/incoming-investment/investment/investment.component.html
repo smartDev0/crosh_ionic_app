@@ -1,0 +1,135 @@
+<ion-content fullscreen mode="ios">
+  <br>
+  <br>
+  <div class="d-flex-center">
+    <div class="d-flex-v-center step-box-active">
+      <ion-icon name="checkmark"></ion-icon>
+    </div>
+    <div class="d-flex-v-center">
+      <div class="divider "></div>
+    </div>
+    <div class="d-flex-v-center step-box-active">2</div>
+    <div class="d-flex-v-center">
+      <div class="divider "></div>
+    </div>
+    <div class="d-flex-v-center step-box-unactive">3</div>
+  </div>
+  <div style="padding: 10px 15px;">
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="form-title">
+          Avez-vous d'autres
+          <div>
+            placements ?
+          </div>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col size="6">
+        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(1)" *ngIf="!isOneActive">
+          Livret A
+        </div>
+        <div class="supplyment-checkbox active d-flex-v-center" (click)="onChangeState(1)" *ngIf="isOneActive">
+           Livret A
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(2)" *ngIf="!isSecondActive">
+          LDD
+        </div>
+        <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(2)" *ngIf="isSecondActive">
+          LDD
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(3)" *ngIf="!isThreeActive">
+         PEL
+        </div>
+        <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(3)" *ngIf="isThreeActive">
+          PEL
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(6)" *ngIf="!isFourActive">
+          Autre revenus de placements
+        </div>
+        <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(6)" *ngIf="isFourActive">
+          Autre revenus de placements
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(5)" *ngIf="!isFiveActive">
+          LEP
+        </div>
+        <div class="supplyment-checkbox active d-flex-v-center" (click)="onChangeState(5)" *ngIf="isFiveActive">
+          LEP
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(6)" *ngIf="!isSixActive">
+          Contrat de capitalisation
+        </div>
+        <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(6)" *ngIf="isSixActive">
+         Contrat de capitalisation
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(7)" *ngIf="!isSevenActive">
+         Assurnance
+        </div>
+        <div class="supplyment-checkbox active d-flex-v-center" (click)="onChangeState(7)" *ngIf="isSevenActive">
+          Assurnance
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(8)" *ngIf="!isEightActive">
+          PEA
+        </div>
+        <div class="supplyment-checkbox active d-flex-v-center" (click)="onChangeState(8)" *ngIf="isEightActive">
+         PEA
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(9)" *ngIf="!isNineActive">
+          PEA-PME
+        </div>
+        <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(9)" *ngIf="isNineActive">
+         PEA-PME
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(10)" *ngIf="!isTenActive">
+          Compte titre
+        </div>
+        <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(10)" *ngIf="isTenActive">
+         Compte titre
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="text-center">
+        <div style="font-size: 16px;
+          font-weight: bold;">
+          Aucun
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="isOneActive">
+      <ion-col>
+        <div class="d-flex" style="display: flex;justify-content: space-between;">
+          <div class="arrow-left d-flex-v-center" routerLink="/received" routerDirection="forward">
+            <ion-icon name="arrow-back" mode="md"></ion-icon>
+          </div>
+          <div class="arrow-right d-flex-v-center" (click)="goIncomingPage()">
+            <ion-icon name="arrow-forward" mode="md"></ion-icon>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <br>
+    <br>
+  </div>
+
+</ion-content>
