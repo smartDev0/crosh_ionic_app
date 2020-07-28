@@ -1,3 +1,122 @@
-<p>
-  calculation works!
-</p>
+<ion-content fullscreen mode="ios">
+  <img src="assets/arrow_down.png" class="close-icon" routerLink="/home/dashboard" routerDirection="forward">
+  <div class="heritage-form">
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="form-title">
+          Calculer son projet
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label class="form-label">
+          Type de projet :
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <input type="text" class="form-input">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label class="form-label">
+          Besoin financier :
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <input type="text" class="form-input">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label class="form-label">
+          Type de project:
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <select name="cars" class="form-input">
+          <option value="volvo">Achat</option>
+          <option value="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+        </select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label class="form-label">
+          Budget :
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <input type="text" class="form-input" placeholder="ex:150 000€">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label class="form-label">
+          Delais :
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <input type="text" class="form-input" placeholder="ex:6 mois">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label class="form-label">
+          Remboursement :
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-range min="10" max="30" step="5" value="15" snaps pin style="padding: 0px;color: #3939ad;">
+        </ion-range>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label class="form-label">
+          Apport :
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <input type="text" class="form-input" placeholder="ex:30 000€">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label class="form-label">
+          Message :
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <textarea type="text" class="form-textarea"></textarea>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col>
+         <ion-button expand="block" routerLink="/home/project" routerDirection="forward">Analyser le projet</ion-button>
+      </ion-col>
+    </ion-row>
+    <br>
+    <br>
+  </div>
+</ion-content>

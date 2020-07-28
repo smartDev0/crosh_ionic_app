@@ -89,6 +89,14 @@
   background-color: #d9d9f9;
   outline: none;
 }
+.project-card {
+  margin: 10px 5px;
+  background-color: #d9d9f9;
+  outline: none;
+}
+.project-card ion-card-content {
+  padding: 15px;
+}
 .crosh-card {
   min-height: 150px;
   margin: 10px 5px;
@@ -119,4 +127,29 @@
   font-size: 18px;
   font-weight: 500;
   color: grey;
+}
+.form-label {
+  font-size: 18px;
+  color: #3939ad;
+}
+.form-input {
+  width: 100%;
+  outline: none;
+  border: 1px solid #3939ad;
+  height: 40px;
+  color: #3939ad;
+  padding: 0 10px;
+}
+.form-textarea {
+  width: 100%;
+  outline: none;
+  border: 1px solid #3939ad;
+  height: 80px;
+  color: #3939ad;
+  padding: 5px 10px;
+}
+.project-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #3b3b70;
 }

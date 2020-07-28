@@ -71,6 +71,14 @@ const routes: Routes = [
       ),
   },
   {
+    path: "calculation",
+    loadChildren: () =>
+      import("./pages/home/calculation/calculation.module").then(
+        (m) => m.CalculationPageRoutingModule
+      ),
+  },
+
+  {
     path: "home",
     component: AdminLayoutComponent,
     children: [
@@ -81,8 +89,20 @@ const routes: Routes = [
             (m) => m.DashboardPageRoutingModule
           ),
       },
+      {
+        path: "project",
+        loadChildren: () =>
+          import("./pages/home/project/project.module").then(
+            (m) => m.ProjectPageRoutingModule
+          ),
+      },
     ],
   },
+  // {
+  //   path: "calculation",
+  //   component: AdminLayoutComponent,
+  //   children: [],
+  // },
 ];
 
 @NgModule({
