@@ -12,28 +12,19 @@
   </div>
   <ion-row>
     <ion-col size="6">
-      <ion-card mode="ios" class="incoming-card  d-flex-v-center"  routerLink="/job-search" routerDirection="forward">
+      <ion-card mode="ios" class="incoming-card incoming-active  d-flex-v-center" routerLink="/job-search"
+        routerDirection="forward">
         <ion-card-content class="text-center">
           <div class="card-value">
             Travail
           </div>
+          <ion-icon name="checkmark" style="font-size: 30px;"></ion-icon>
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col size="6" *ngIf="!pensionActive">
-      <ion-card mode="ios" class="incoming-card d-flex-v-center" routerLink="/pension-type" routerDirection="forward">
-        <ion-card-content class="text-center">
-          <div class="card-value">
-            Retraites
-            <div>
-              & pensions
-            </div>
-          </div>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-     <!-- <ion-col size="6" >
-      <ion-card mode="ios" class="incoming-card incoming-active d-flex-v-center" routerLink="/pension-type" routerDirection="forward">
+    <ion-col size="6">
+      <ion-card mode="ios" class="incoming-card incoming-active d-flex-v-center" routerLink="/pension-type"
+        routerDirection="forward">
         <ion-card-content class="text-center">
           <div class="card-value">
             Retraites
@@ -44,7 +35,7 @@
           </div>
         </ion-card-content>
       </ion-card>
-    </ion-col> -->
+    </ion-col>
     <ion-col size="6">
       <ion-card mode="ios" class="incoming-card  d-flex-v-center">
         <ion-card-content class="text-center">
@@ -55,19 +46,21 @@
       </ion-card>
     </ion-col>
     <ion-col size="6">
-      <ion-card mode="ios" class="incoming-card  d-flex-v-center" routerLink="/profile-social" routerDirection="forward">
+      <ion-card mode="ios" class="incoming-card  incoming-active d-flex-v-center" routerLink="/profile-social"
+        routerDirection="forward">
         <ion-card-content class="text-center">
           <div class="card-value">
             Revenus
             <div>
               sociaux
             </div>
+            <ion-icon name="checkmark" style="font-size: 30px;"></ion-icon>
           </div>
         </ion-card-content>
       </ion-card>
     </ion-col>
-     <ion-col size="6">
-      <ion-card mode="ios" class="incoming-card  d-flex-v-center" routerLink="/received" routerDirection="forward">
+    <ion-col size="6">
+      <ion-card mode="ios" class="incoming-card incoming-active d-flex-v-center" routerLink="/received" routerDirection="forward">
         <ion-card-content class="text-center">
           <div class="card-value">
             Revenus
@@ -76,21 +69,30 @@
             </div>
             placement
           </div>
+          <ion-icon name="checkmark" style="font-size: 30px;"></ion-icon>
         </ion-card-content>
       </ion-card>
     </ion-col>
-     <ion-col size="6">
-      <ion-card mode="ios" class="incoming-card  d-flex-v-center" routerLink="/profile-tax" routerDirection="forward">
+    <ion-col size="6">
+      <ion-card mode="ios" class="incoming-card incoming-active d-flex-v-center" routerLink="/profile-tax" routerDirection="forward">
         <ion-card-content class="text-center">
           <div class="card-value">
             Revenus
             <div>
               fiscaux
             </div>
+            <ion-icon name="checkmark" style="font-size: 30px;"></ion-icon>
           </div>
         </ion-card-content>
       </ion-card>
     </ion-col>
   </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block">Voir votre fiche synthese</ion-button>
+    </ion-col>
+  </ion-row>
+  <br>
+  <br>
 
 </ion-content>

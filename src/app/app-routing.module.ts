@@ -147,6 +147,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: "profile-incoming-done",
+    loadChildren: () =>
+      import(
+        "./pages/account/profile-incoming-done/profile-incoming-done.module"
+      ).then((m) => m.ProfileIncomingDonePageRoutingModule),
+  },
+  {
     path: "pension-type",
     loadChildren: () =>
       import("./pages/account/pensions/pension-type/pension-type.module").then(
@@ -200,6 +207,20 @@ const routes: Routes = [
     loadChildren: () =>
       import("./pages/account/job/illness/illness.module").then(
         (m) => m.IllnessPageRoutingModule
+      ),
+  },
+  {
+    path: "unemployed",
+    loadChildren: () =>
+      import("./pages/account/job/unemployed/unemployed.module").then(
+        (m) => m.UnemployedPageRoutingModule
+      ),
+  },
+  {
+    path: "unemployed-more",
+    loadChildren: () =>
+      import("./pages/account/job/unemployed-more/unemployed-more.module").then(
+        (m) => m.UnemployedMorePageRoutingModule
       ),
   },
   {
