@@ -118,6 +118,20 @@ const routes: Routes = [
         (m) => m.CroshPageRoutingModule
       ),
   },
+  {
+    path: "crosh-about",
+    loadChildren: () =>
+      import("./pages/auth/crosh-about/crosh-about.module").then(
+        (m) => m.CroshAboutPageRoutingModule
+      ),
+  },
+  {
+    path: "crosh-security",
+    loadChildren: () =>
+      import("./pages/auth/crosh-secrurity/crosh-security.module").then(
+        (m) => m.CroshSecurityPageRoutingModule
+      ),
+  },
 ];
 
 @NgModule({
