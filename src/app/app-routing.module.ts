@@ -196,6 +196,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: "illness",
+    loadChildren: () =>
+      import("./pages/account/job/illness/illness.module").then(
+        (m) => m.IllnessPageRoutingModule
+      ),
+  },
+  {
     path: "profile-social",
     loadChildren:
       "./pages/account/social/social.module#SocialPageRoutingModule",
