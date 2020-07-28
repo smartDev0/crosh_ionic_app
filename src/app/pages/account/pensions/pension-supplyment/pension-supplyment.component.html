@@ -1,3 +1,264 @@
-<p>
-  pension-supplyment works!
-</p>
+<ion-content fullscreen mode="ios">
+  <br>
+  <br>
+  <div class="d-flex-center">
+    <div class="d-flex-v-center step-box-active">
+      <ion-icon name="checkmark"></ion-icon>
+    </div>
+    <div class="d-flex-v-center">
+      <div class="divider "></div>
+    </div>
+    <div class="d-flex-v-center step-box-active">2</div>
+  </div>
+  <ion-row>
+    <ion-col class="text-center">
+      <ion-label class="form-title">
+        Quel est votre
+        <div>
+          complement retraite ?
+        </div>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+  <br>
+  <ion-row>
+    <ion-col size="4">
+      <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(1)" *ngIf="!isOneActive">
+        PER
+      </div>
+      <div class="supplyment-checkbox active d-flex-v-center" (click)="onChangeState(1)" *ngIf="isOneActive">
+        PER
+      </div>
+    </ion-col>
+    <ion-col size="4">
+      <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(2)" *ngIf="!isSecondActive">
+        PERP
+      </div>
+      <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(2)" *ngIf="isSecondActive">
+        PERP
+      </div>
+    </ion-col>
+    <ion-col size="4">
+      <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(3)" *ngIf="!isThreeActive">
+        Pension
+        militaire
+      </div>
+      <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(3)" *ngIf="isThreeActive">
+        Pension
+        militaire
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="4">
+      <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(4)" *ngIf="!isFourActive">
+        MADEELIN
+      </div>
+      <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(4)" *ngIf="isFourActive">
+        MADEELIN
+      </div>
+    </ion-col>
+    <ion-col size="4">
+      <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(5)" *ngIf="!isFiveActive">
+        PERCO
+      </div>
+      <div class="supplyment-checkbox active d-flex-v-center" (click)="onChangeState(5)" *ngIf="isFiveActive">
+        PERCO
+      </div>
+    </ion-col>
+    <ion-col size="4">
+      <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(6)" *ngIf="!isSixActive">
+        Article 83
+      </div>
+      <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(6)" *ngIf="isSixActive">
+        Article 83
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="4">
+      <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(7)" *ngIf="!isSevenActive">
+        Article 63
+      </div>
+      <div class="supplyment-checkbox active d-flex-v-center" (click)="onChangeState(7)" *ngIf="isSevenActive">
+        Article 63
+      </div>
+    </ion-col>
+    <ion-col size="4">
+      <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(8)" *ngIf="!isEightActive">
+        Capital Deces
+      </div>
+      <div class="supplyment-checkbox active d-flex-v-center" (click)="onChangeState(8)" *ngIf="isEightActive">
+        Capital Deces
+      </div>
+    </ion-col>
+    <ion-col size="4">
+      <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(9)" *ngIf="!isNineActive">
+        Assurance vie
+      </div>
+      <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(9)" *ngIf="isNineActive">
+        Assurance vie
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="text-center">
+      <div style="font-size: 16px;
+  font-weight: bold;">
+        Aucun
+      </div>
+    </ion-col>
+  </ion-row>
+  <div style="padding: 15px;" *ngIf="isOneActive">
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="form-title">
+          Revenu PER:
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-text">Capital ?</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-value">
+          {{monthValue}} €
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-range min="0" max="360000" class="range" step="100" value="{{monthValue}}"
+          (ionChange)="onChangeGetMonthValue($event)">
+        </ion-range>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-text">Rente par mois ?</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-value">
+          {{remainMonthValue}} €
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-range min="0" max="4400" class="range" step="100" value="{{remainMonthValue}}"
+          (ionChange)="onChangeGetRemainValue($event)">
+        </ion-range>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-text">Rente trimestrielle ?</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-value">
+          {{timerValue}} €
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-range min="0" max="13200" class="range" step="100" value="{{timerValue}}"
+          (ionChange)="onChangeGetTimerValue($event)">
+        </ion-range>
+      </ion-col>
+    </ion-row>
+    <br>
+  </div>
+  <div style="padding: 15px;" *ngIf="isNineActive">
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="form-title">
+         Revenu Assurance vie :
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-text">Capital ?</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-value">
+          {{monthValue}} €
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-range min="0" max="360000" class="range" step="100" value="{{monthValue}}"
+          (ionChange)="onChangeGetMonthValue($event)">
+        </ion-range>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-text">Rente par mois ?</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-value">
+          {{remainMonthValue}} €
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-range min="0" max="4400" class="range" step="100" value="{{remainMonthValue}}"
+          (ionChange)="onChangeGetRemainValue($event)">
+        </ion-range>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-text">Rente trimestrielle ?</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-value">
+          {{timerValue}} €
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-range min="0" max="13200" class="range" step="100" value="{{timerValue}}"
+          (ionChange)="onChangeGetTimerValue($event)">
+        </ion-range>
+      </ion-col>
+    </ion-row>
+    <br>
+  </div>
+  <ion-row *ngIf="isOneActive || isNineActive">
+    <ion-col>
+      <div class="d-flex" style="display: flex;justify-content: space-between;">
+        <div class="arrow-left d-flex-v-center" routerLink="/pension-type" routerDirection="forward">
+          <ion-icon name="arrow-back" mode="md"></ion-icon>
+        </div>
+        <div class="arrow-right d-flex-v-center" (click)="goIncomingPage()">
+          <ion-icon name="checkmark" mode="md"></ion-icon>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+  <br>
+  <br>
+</ion-content>
