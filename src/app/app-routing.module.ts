@@ -165,6 +165,11 @@ const routes: Routes = [
     loadChildren:
       "./pages/account/social/social.module#SocialPageRoutingModule",
   },
+  {
+    path: "profile-tax",
+    loadChildren:
+      "./pages/account/profile-tax/profile-tax.module#ProfileTaxPageRoutingModule",
+  },
 ];
 
 @NgModule({

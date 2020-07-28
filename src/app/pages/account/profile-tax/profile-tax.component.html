@@ -1,0 +1,99 @@
+<ion-content fullscreen mode="ios">
+  <br>
+  <br>
+  <br>
+  <ion-row>
+    <ion-col class="text-center">
+      <ion-label class="form-title">
+       Percevez-vous un credit
+        <div>
+          d'impot ?
+        </div>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+  <br>
+  <ion-row>
+    <ion-col size="6">
+      <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(1)" *ngIf="!isOneActive">
+        OUI
+      </div>
+      <div class="supplyment-checkbox active d-flex-v-center" (click)="onChangeState(1)" *ngIf="isOneActive">
+        OUI
+      </div>
+    </ion-col>
+    <ion-col size="6">
+      <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(2)" *ngIf="!isSecondActive">
+        NON
+      </div>
+      <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(2)" *ngIf="isSecondActive">
+        NON
+      </div>
+    </ion-col>
+  </ion-row>
+  <div style="padding: 15px;" *ngIf="isOneActive">
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="form-title">
+          Montant percu:
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-text">Montant percu ?</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-value">
+          {{monthValue}} €
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-range min="0" max="360000" class="range" step="100" value="{{monthValue}}"
+          (ionChange)="onChangeGetMonthValue($event)">
+        </ion-range>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-text">Montant mensuel ?</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="text-center">
+        <ion-label class="incoming-value">
+          {{remainMonthValue}} €
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-range min="0" max="4400" class="range" step="100" value="{{remainMonthValue}}"
+          (ionChange)="onChangeGetRemainValue($event)">
+        </ion-range>
+      </ion-col>
+    </ion-row>
+    <br>
+    <br>
+  </div>
+ 
+  <ion-row *ngIf="isOneActive">
+    <ion-col>
+      <div class="d-flex" style="display: flex;justify-content: space-between;">
+        <div class="arrow-left d-flex-v-center" routerLink="/profile-incoming" routerDirection="forward">
+          <ion-icon name="arrow-back" mode="md"></ion-icon>
+        </div>
+        <div class="arrow-right d-flex-v-center" (click)="goIncomingPage()">
+          <ion-icon name="checkmark" mode="md"></ion-icon>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+  <br>
+  <br>
+</ion-content>
