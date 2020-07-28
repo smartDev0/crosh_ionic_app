@@ -182,6 +182,20 @@ const routes: Routes = [
       ).then((m) => m.InvestmentMorePageRoutingModule),
   },
   {
+    path: "job-search",
+    loadChildren: () =>
+      import("./pages/account/job/search/search.module").then(
+        (m) => m.SearchPageRoutingModule
+      ),
+  },
+  {
+    path: "merchant",
+    loadChildren: () =>
+      import("./pages/account/job/merchant/merchant.module").then(
+        (m) => m.MerchantPageRoutingModule
+      ),
+  },
+  {
     path: "profile-social",
     loadChildren:
       "./pages/account/social/social.module#SocialPageRoutingModule",
