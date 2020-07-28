@@ -146,6 +146,13 @@ const routes: Routes = [
         (m) => m.ProfileIncomingPageRoutingModule
       ),
   },
+  {
+    path: "pension-type",
+    loadChildren: () =>
+      import("./pages/account/pensions/pension-type/pension-type.module").then(
+        (m) => m.PensionTypePageRoutingModule
+      ),
+  },
 ];
 
 @NgModule({
