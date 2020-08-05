@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
   async ngOnInit() {
-    if (this.authService.isLoggedIn) {
-      this.router.navigate(["home"]);
-    }
+    // if (this.authService.isLoggedIn) {
+    //   this.router.navigate(["home"]);
+    // }
   }
   onSubmit() {
     this.submitted = true;
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
       .then((res) => {
         console.log(res);
         if (res.user.emailVerified) {
-          this.router.navigate(["home"]);
+          this.router.navigate(["home/dashboard"]);
         } else {
           window.alert("Email is not verified");
           return false;
@@ -55,8 +55,5 @@ export class LoginComponent implements OnInit {
       .catch((error) => {
         window.alert(error.message);
       });
-  }
-  goVerify() {
-    this.router.navigate(["/verify"]);
   }
 }

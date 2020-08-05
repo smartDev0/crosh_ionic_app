@@ -14,12 +14,12 @@
         <ion-col>
           <ion-item>
             <ion-label position="floating">Email</ion-label>
-            <ion-input type="email" class="form-control" name="email" formControlName="email" placeholder="Correo electrónico"
-            required [ngClass]="{ 'is-invalid': submitted && f.email.errors }"></ion-input>
+            <ion-input type="email" class="form-control" name="email" formControlName="email" required
+              [ngClass]="{ 'is-invalid': submitted && f.email.errors }"></ion-input>
           </ion-item>
           <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-          <div *ngIf="f.email.errors.required">Email is required</div>
-        </div>
+            <div *ngIf="f.email.errors.required">Email is required</div>
+          </div>
         </ion-col>
       </ion-row>
       <ion-row mode="md">
@@ -27,12 +27,12 @@
           <ion-item>
             <ion-label position="floating">Mot de passe</ion-label>
             <ion-input type="password" class="form-control" name="password"
-          [ngClass]="{ 'is-invalid': submitted && f.password.errors }" formControlName="password"
-            placeholder="Contraseña" required></ion-input>
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }" formControlName="password" required>
+            </ion-input>
           </ion-item>
           <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-          <div *ngIf="f.password.errors.required">Password is required</div>
-        </div>
+            <div *ngIf="f.password.errors.required">Password is required</div>
+          </div>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -50,7 +50,7 @@
       <br>
       <ion-row>
         <ion-col>
-          <ion-button expand="block"  type="submit">Se connecter</ion-button>
+          <ion-button expand="block" type="submit">Se connecter</ion-button>
         </ion-col>
       </ion-row>
     </form>

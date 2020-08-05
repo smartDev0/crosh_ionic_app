@@ -240,6 +240,14 @@ const routes: Routes = [
     loadChildren:
       "./pages/account/profile-tax/profile-tax.module#ProfileTaxPageRoutingModule",
   },
+  {
+    path: 'verify-email',
+    loadChildren: () => import('./pages/auth/verify-email/verify-email.module').then( m => m.VerifyEmailPageModule)
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./pages/auth/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  },
 ];
 
 @NgModule({
