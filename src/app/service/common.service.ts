@@ -24,6 +24,7 @@ export class CommonService {
     this.Status.next("");
   }
   private typeCollection: AngularFirestoreCollection<Type>;
+  private jobCollection: AngularFirestoreCollection<Type>;
   constructor(
     public afStore: AngularFirestore,
     public ngFireAuth: AngularFireAuth,
@@ -32,8 +33,13 @@ export class CommonService {
     public http: HttpClient
   ) {
     this.typeCollection = afStore.collection<Type>("types");
+    this.jobCollection = afStore.collection<Type>("jobs");
   }
-  getTypes() {
-    return this.typeCollection.valueChanges();
+  getTypeCategoires() {
+    return this.typeCollection.snapshotChanges();
+  }
+
+  getJobCategories() {
+    return this.jobCollection.snapshotChanges();
   }
 }

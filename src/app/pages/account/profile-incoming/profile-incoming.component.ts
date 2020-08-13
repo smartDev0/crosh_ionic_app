@@ -7,10 +7,16 @@ import { CommonService } from "../../../service/common.service";
 })
 export class ProfileIncomingComponent implements OnInit {
   public pensionActive: boolean = false;
+  public types;
   constructor(private commonService: CommonService) {
-    console.log("????????", this.commonService.getTypes());
-    this.commonService.getTypes().subscribe((res) => {
-      console.log("///", res);
+    this.commonService.getTypeCategoires().subscribe((res) => {
+      this.types = res.map((e) => {
+        return {
+          id: e.payload.doc.id,
+          name: e.payload.doc.data()["name"],
+        };
+      });
+      console.log(this.types);
     });
     this.commonService.currentStatus.subscribe((item) => {
       // this.ionViewWillEnter();
