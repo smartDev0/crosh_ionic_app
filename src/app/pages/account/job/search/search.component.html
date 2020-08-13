@@ -8,7 +8,7 @@
     </div>
     <div class="d-flex-v-center step-box-unactive">2</div>
   </div>
-  <ion-row>
+   <ion-row>
     <ion-col class="text-center">
       <ion-label class="form-title">
         Quel est votre emploi ?
@@ -16,7 +16,7 @@
     </ion-col>
   </ion-row>
   <div style="padding:5px 25px">
-    <ion-row class="p-top-10">
+   <!--<ion-row class="p-top-10">
       <ion-col class="text-center">
         <ion-label class="search-text" style="opacity: 0.3;">
           Apprenti
@@ -36,15 +36,23 @@
           Auteur
         </ion-label>
       </ion-col>
-    </ion-row>
-    <ion-row class="p-top-10">
-      <ion-col class="text-center">
-        <div class="search-text" style="line-height: 40px;width: 100%; border-radius: 25px;border: 1px solid grey;" routerLink="/merchant" routerDirection="forward">
-          Commercant
+    </ion-row> -->
+  <ng-container *ngIf="jobs">
+    <ion-row class="p-top-10" *ngFor="let data of jobs;let i = index" >
+      <ion-col class="text-center" (click)="onClickMove(data.name, data.id)">
+        <div class="search-text" *ngIf="i == 4" 
+          style="line-height: 40px;width: 100%; border-radius: 25px;border: 1px solid grey;"
+          >
+          {{data.name}}
         </div>
+        <ion-label class="search-text" *ngIf="i != 4"style="opacity: 0.6;" >
+          {{data.name}}
+        </ion-label>
       </ion-col>
     </ion-row>
-    <ion-row class="p-top-10">
+  </ng-container>
+
+  <!-- <ion-row class="p-top-10">
       <ion-col class="text-center">
         <ion-label class="search-text" style="opacity: 0.8;">
           Exploitant agricole
@@ -71,22 +79,22 @@
           Longue maladie
         </ion-label>
       </ion-col>
-    </ion-row>
-    <br>
-    <br>
-    <br>
-    <ion-row>
-      <ion-col>
-        <div class="d-flex" style="display: flex;justify-content: space-between;">
-          <div class="arrow-left d-flex-v-center" routerLink="/profile-incoming" routerDirection="forward">
-            <ion-icon name="arrow-back" mode="md"></ion-icon>
-          </div>
-          <div class="arrow-right d-flex-v-center" routerLink="/merchant" routerDirection="forward">
-            <ion-icon name="arrow-forward" mode="md"></ion-icon>
-          </div>
+    </ion-row> -->
+  <br>
+  <br>
+  <br>
+  <ion-row>
+    <ion-col>
+      <div class="d-flex" style="display: flex;justify-content: space-between;">
+        <div class="arrow-left d-flex-v-center" routerLink="/profile-incoming" routerDirection="forward">
+          <ion-icon name="arrow-back" mode="md"></ion-icon>
         </div>
-      </ion-col>
-    </ion-row>
+        <div class="arrow-right d-flex-v-center" routerLink="/merchant" routerDirection="forward">
+          <ion-icon name="arrow-forward" mode="md"></ion-icon>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
   </div>
 
 </ion-content>

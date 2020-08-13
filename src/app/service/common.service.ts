@@ -25,6 +25,7 @@ export class CommonService {
   }
   private typeCollection: AngularFirestoreCollection<Type>;
   private jobCollection: AngularFirestoreCollection<Type>;
+  private revenusUserCollection: AngularFirestoreCollection<Type>;
   constructor(
     public afStore: AngularFirestore,
     public ngFireAuth: AngularFireAuth,
@@ -34,6 +35,7 @@ export class CommonService {
   ) {
     this.typeCollection = afStore.collection<Type>("types");
     this.jobCollection = afStore.collection<Type>("jobs");
+    this.revenusUserCollection = afStore.collection<Type>("revenus_users");
   }
   getTypeCategoires() {
     return this.typeCollection.snapshotChanges();
@@ -41,5 +43,9 @@ export class CommonService {
 
   getJobCategories() {
     return this.jobCollection.snapshotChanges();
+  }
+
+  addRevenusUser(form) {
+    return this.revenusUserCollection.add(form);
   }
 }

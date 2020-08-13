@@ -13,7 +13,7 @@
   </div>
   <ion-row *ngIf="types">
     <ion-col size="6" *ngFor="let data of types">
-      <ion-card mode="ios" class="incoming-card  d-flex-v-center" routerLink="/job-search" routerDirection="forward">
+      <ion-card mode="ios" class="incoming-card  d-flex-v-center" (click)="onClickMove(data.name, data.id)">
         <ion-card-content class="text-center">
           <div class="card-value">
             {{data.name}}
