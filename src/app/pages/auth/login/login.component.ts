@@ -44,9 +44,9 @@ export class LoginComponent implements OnInit {
     this.authService
       .SignIn(this.loginForm.value.email, this.loginForm.value.password)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.user.emailVerified) {
-          this.router.navigate(["home/dashboard"]);
+          this.router.navigate(["done"]);
         } else {
           window.alert("Email is not verified");
           return false;

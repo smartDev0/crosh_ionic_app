@@ -8,9 +8,13 @@ import { CommonService } from "../../../service/common.service";
 export class ProfileIncomingComponent implements OnInit {
   public pensionActive: boolean = false;
   constructor(private commonService: CommonService) {
+    console.log("????????", this.commonService.getTypes());
+    this.commonService.getTypes().subscribe((res) => {
+      console.log("///", res);
+    });
     this.commonService.currentStatus.subscribe((item) => {
       // this.ionViewWillEnter();
-      console.log("????????", item);
+      // console.log("????????", item);
     });
     if (localStorage.getItem("pensionActive") == "1") {
       this.pensionActive = true;

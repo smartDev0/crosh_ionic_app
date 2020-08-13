@@ -14,7 +14,7 @@ export class WelcomeComponent implements OnInit {
 
   async ngOnInit() {
     if (this.authService.isLoggedIn) {
-      // this.router.navigate(["home/dashboard"]);
+      this.router.navigate(["home/dashboard"]);
     }
   }
   goLogin() {

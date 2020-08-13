@@ -44,15 +44,15 @@ export class RegisterComponent implements OnInit {
       window.alert("please match password");
       return;
     }
+    const userData = {
+      firstName: this.registerForm.value.password,
+    };
     this.authService
-      .RegisterUser(
-        this.registerForm.value.email,
-        this.registerForm.value.password
-      )
+      .RegisterUser(this.registerForm.value)
       .then((res) => {
         // Do something here
         this.authService.SendVerificationMail();
-        this.router.navigate(["done"]);
+        this.router.navigate(["verify-email"]);
       })
       .catch((error) => {
         window.alert(error.message);

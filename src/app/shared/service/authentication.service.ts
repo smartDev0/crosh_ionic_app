@@ -6,6 +6,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import {
   AngularFirestore,
   AngularFirestoreDocument,
+  AngularFirestoreCollection,
 } from "@angular/fire/firestore";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
@@ -17,7 +18,7 @@ import { resolve } from "url";
 export class AuthenticationService {
   userData: any;
   credential: any;
-
+  private userCollection: AngularFirestoreCollection<User>;
   constructor(
     public afStore: AngularFirestore,
     public ngFireAuth: AngularFireAuth,
@@ -25,6 +26,7 @@ export class AuthenticationService {
     public ngZone: NgZone,
     public http: HttpClient
   ) {
+    this.userCollection = afStore.collection<User>("users");
     this.ngFireAuth.authState.subscribe((user) => {
       if (user) {
         this.ngFireAuth.updateCurrentUser(user).then(() => {
@@ -48,8 +50,27 @@ export class AuthenticationService {
   }
 
   // Register user with email/password
-  RegisterUser(email, password) {
-    return this.ngFireAuth.createUserWithEmailAndPassword(email, password);
+  RegisterUser(value) {
+    // return this.ngFireAuth.createUserWithEmailAndPassword(email, password);
+    return new Promise<any>((resolve, reject) => {
+      this.ngFireAuth
+        .createUserWithEmailAndPassword(value.email, value.password)
+        .then(
+          (res) => {
+            let user = {
+              email: value.email,
+              id: res.user.uid,
+              firstName: value.firstName,
+              lastName: value.lastName,
+            };
+            this.userCollection.doc(res.user.uid).set(user);
+            resolve(res);
+          },
+          (err) => {
+            reject(err);
+          }
+        );
+    });
   }
 
   // Email verification when new user register
@@ -57,7 +78,7 @@ export class AuthenticationService {
     return this.ngFireAuth.currentUser
       .then((u) => u.sendEmailVerification())
       .then(() => {
-        this.router.navigate(["done"]);
+        this.router.navigate(["verify-email"]);
       });
   }
 
@@ -112,7 +133,7 @@ export class AuthenticationService {
     const userRef: AngularFirestoreDocument<any> = this.afStore.doc(
       `users/${user.uid}`
     );
-    const userData: User = {
+    const userData = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
