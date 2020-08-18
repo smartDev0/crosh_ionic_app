@@ -58,8 +58,8 @@ export class MerchantComponent implements OnInit {
           id_user: this.user.uid,
           type: this.typeId,
           job: this.jobId,
-          month_salary: this.remainMonthValue,
-          year_salary: this.monthValue,
+          month_salary: this.monthValue,
+          year_salary: this.remainMonthValue,
         };
         this.commonService.addRevenusUser(form).then((res) => {
           ref.loadingController.dismiss();
