@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { CommonService } from "src/app/service/common.service";
-import { LoadingController } from "@ionic/angular";
+import { LoadingController, NavController } from "@ionic/angular";
 
 @Component({
   selector: "app-merchant",
@@ -18,7 +18,7 @@ export class MerchantComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private commonService: CommonService,
+    private commonService: CommonService, private navCtrl: NavController,
     public loadingController: LoadingController
   ) {
     this.monthValue = 220000;
@@ -63,7 +63,13 @@ export class MerchantComponent implements OnInit {
         };
         this.commonService.addRevenusUser(form).then((res) => {
           ref.loadingController.dismiss();
-          this.router.navigateByUrl("/profile-incoming-done");
+          
+          const cardNameArr = JSON.parse(localStorage.getItem("card_items")) || [];
+          const updatedCardNameArr = new Set([...cardNameArr, "Travail"]);
+          localStorage.setItem("card_items", JSON.stringify([...updatedCardNameArr]));
+
+          this.router.navigate(["/profile-incoming"]);
+          //  this.navCtrl.navigateRoot(["/profile-incoming"]);
         });
       });
   }

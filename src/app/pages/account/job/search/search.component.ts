@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonService } from "../../../../service/common.service";
 import { Router } from "@angular/router";
-import { LoadingController } from "@ionic/angular";
+import { LoadingController, NavController } from "@ionic/angular";
 
 @Component({
   selector: "app-search",
@@ -10,10 +10,15 @@ import { LoadingController } from "@ionic/angular";
 })
 export class SearchComponent implements OnInit {
   public jobs;
+  option1 = {
+    // loop: true,
+    direction: "vertical",
+  };
   constructor(
     private commonService: CommonService,
     public router: Router,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    private navCtrl: NavController
   ) {
     this.loadingController
       .create({
@@ -32,6 +37,7 @@ export class SearchComponent implements OnInit {
           ref.loadingController.dismiss();
         });
       });
+    console.log('search')
     // this.commonService.getJobCategories().subscribe((res) => {
     //   this.jobs = res.map((e) => {
     //     return {

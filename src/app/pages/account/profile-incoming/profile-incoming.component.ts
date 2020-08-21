@@ -8,7 +8,12 @@ import { LoadingController } from "@ionic/angular";
   styleUrls: ["./profile-incoming.component.scss"],
 })
 export class ProfileIncomingComponent implements OnInit {
-  public pensionActive: boolean = false;
+  public TravailActive: String ;
+  public pensionsActive: boolean = false;
+  public CapitalActive: boolean = false;
+  public RevenusActive: boolean = false;
+  public immobiliersActive: boolean = false;
+  public fiscauxActive: boolean = false;
   public types;
   constructor(
     private commonService: CommonService,
@@ -32,17 +37,13 @@ export class ProfileIncomingComponent implements OnInit {
           ref.loadingController.dismiss();
         });
       });
-
-    this.commonService.currentStatus.subscribe((item) => {
-      // this.ionViewWillEnter();
-      // console.log("????????", item);
-    });
-    if (localStorage.getItem("pensionActive") == "1") {
-      this.pensionActive = true;
-    }
   }
-  ionViewWillEnter() {}
-  ngOnInit() {}
+
+  ngOnInit() { }
+  
+  ionViewWillEnter() {
+  }
+
   ngAfterViewInit() {}
   onClickMove(type, typeId) {
     localStorage.setItem("typeId", typeId);
@@ -72,5 +73,10 @@ export class ProfileIncomingComponent implements OnInit {
         break;
       }
     }
+  }
+
+  isCardActive(name: string): boolean {
+    const cardNameArr: string[] = JSON.parse(localStorage.getItem('card_items')) || [];
+    return cardNameArr.includes(name);
   }
 }
