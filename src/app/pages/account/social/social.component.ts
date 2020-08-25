@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { CommonService } from "src/app/service/common.service";
-
+import { LoadingController } from "@ionic/angular";
 @Component({
   selector: "app-social",
   templateUrl: "./social.component.html",
@@ -17,24 +17,54 @@ export class SocialComponent implements OnInit {
   public isSevenActive: boolean = false;
   public isEightActive: boolean = false;
   public isNineActive: boolean = false;
-  public monthValue;
+  public collectedValue;
   public remainMonthValue;
   public timerValue;
-
-  constructor(private router: Router, private commonService: CommonService) {
-    this.monthValue = 220000;
+  public types;
+  selectedItem: number;
+  public typeId;
+  public user;
+  public categoryId;
+  constructor(
+    private router: Router,
+    private commonService: CommonService,
+    public loadingController: LoadingController
+  ) {
+    this.collectedValue = 220000;
     this.remainMonthValue = 2200;
     this.timerValue = 6600;
+    this.user = JSON.parse(localStorage.getItem("user"));
+    this.typeId = localStorage.getItem("typeId");
+    this.loadingController
+      .create({
+        message: "Wait a second...",
+      })
+      .then((loadingElement) => {
+        loadingElement.present();
+        var ref = this;
+        this.commonService.getTypeSocial().subscribe((res) => {
+          this.types = res.map((e) => {
+            return {
+              id: e.payload.doc.id,
+              name: e.payload.doc.data()["name"],
+            };
+          });
+          console.log(this.types);
+          ref.loadingController.dismiss();
+        });
+      });
   }
 
   ngOnInit() {}
-  onChangeState(id) {
+  onChangeState(id, typeId) {
+    this.selectedItem = id - 1;
+    this.categoryId = typeId;
     switch (id) {
       case 1:
         this.isOneActive = !this.isOneActive;
         break;
       case 2:
-        this.isSecondActive = !this.isSecondActive;
+        this.isSecondActive = true;
         break;
       case 3:
         this.isThreeActive = !this.isThreeActive;
@@ -42,25 +72,10 @@ export class SocialComponent implements OnInit {
       case 4:
         this.isFourActive = !this.isFourActive;
         break;
-      case 5:
-        this.isFiveActive = !this.isFiveActive;
-        break;
-      case 6:
-        this.isSixActive = !this.isSixActive;
-        break;
-      case 7:
-        this.isSevenActive = !this.isSevenActive;
-        break;
-      case 8:
-        this.isEightActive = !this.isEightActive;
-        break;
-      case 9:
-        this.isNineActive = !this.isNineActive;
-        break;
     }
   }
   onChangeGetMonthValue(event) {
-    this.monthValue = event.target.value;
+    this.collectedValue = event.target.value;
   }
   onChangeGetRemainValue(event) {
     this.remainMonthValue = event.target.value;
@@ -75,4 +90,36 @@ export class SocialComponent implements OnInit {
     localStorage.setItem("pensionActive", "1");
     // this.commonService.filter("Register click");
   }
+  submit() {
+    this.loadingController
+      .create({
+        message: "Wait a second...",
+      })
+      .then((loadingElement) => {
+        loadingElement.present();
+        var ref = this;
+        const form = {
+          id_user: this.user.uid,
+          type: this.typeId,
+          categoryId: this.categoryId,
+          collected_salary: this.collectedValue,
+          month_salary: this.remainMonthValue,
+          annuity_salary: this.timerValue,
+        };
+        console.log(form)
+        this.commonService.addRevenusSocial(form).then((res) => {
+          console.log(res)
+          ref.loadingController.dismiss();
+          
+          const cardNameArr = JSON.parse(localStorage.getItem("card_items")) || [];
+          const updatedCardNameArr = new Set([
+            ...cardNameArr,
+            "Revenus sociaux",
+          ]);
+          localStorage.setItem("card_items", JSON.stringify([...updatedCardNameArr]));
+          this.router.navigate(["/profile-incoming"]);
+        });
+      });
+  }
+  
 }
