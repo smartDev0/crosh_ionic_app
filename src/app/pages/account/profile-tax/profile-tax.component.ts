@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { CommonService } from "src/app/service/common.service";
+import { LoadingController, NavController } from "@ionic/angular";
 
 @Component({
   selector: "app-profile-tax",
@@ -10,21 +11,21 @@ import { CommonService } from "src/app/service/common.service";
 export class ProfileTaxComponent implements OnInit {
   public isOneActive: boolean = false;
   public isSecondActive: boolean = false;
-  public isThreeActive: boolean = false;
-  public isFourActive: boolean = false;
-  public isFiveActive: boolean = false;
-  public isSixActive: boolean = false;
-  public isSevenActive: boolean = false;
-  public isEightActive: boolean = false;
-  public isNineActive: boolean = false;
   public monthValue;
   public remainMonthValue;
-  public timerValue;
+  public typeId;
+  public user;
 
-  constructor(private router: Router, private commonService: CommonService) {
+  constructor(
+    private router: Router,
+    private commonService: CommonService,
+    private navCtrl: NavController,
+    public loadingController: LoadingController
+  ) {
     this.monthValue = 220000;
     this.remainMonthValue = 2200;
-    this.timerValue = 6600;
+    this.typeId = localStorage.getItem("typeId");
+    this.user = JSON.parse(localStorage.getItem("user"));
   }
 
   ngOnInit() {}
@@ -32,30 +33,11 @@ export class ProfileTaxComponent implements OnInit {
     switch (id) {
       case 1:
         this.isOneActive = !this.isOneActive;
+        this.isSecondActive = false;
         break;
       case 2:
         this.isSecondActive = !this.isSecondActive;
-        break;
-      case 3:
-        this.isThreeActive = !this.isThreeActive;
-        break;
-      case 4:
-        this.isFourActive = !this.isFourActive;
-        break;
-      case 5:
-        this.isFiveActive = !this.isFiveActive;
-        break;
-      case 6:
-        this.isSixActive = !this.isSixActive;
-        break;
-      case 7:
-        this.isSevenActive = !this.isSevenActive;
-        break;
-      case 8:
-        this.isEightActive = !this.isEightActive;
-        break;
-      case 9:
-        this.isNineActive = !this.isNineActive;
+        this.isOneActive = false;
         break;
     }
   }
@@ -65,14 +47,45 @@ export class ProfileTaxComponent implements OnInit {
   onChangeGetRemainValue(event) {
     this.remainMonthValue = event.target.value;
   }
-  onChangeGetTimerValue(event) {
-    this.timerValue = event.target.value;
-  }
+
   goIncomingPage() {
     this.router.navigateByUrl("/profile-incoming");
     this.commonService.changeStatus();
     this.commonService.pensionActive = true;
     localStorage.setItem("pensionActive", "1");
     // this.commonService.filter("Register click");
+  }
+  submit() {
+    this.loadingController
+      .create({
+        message: "Wait a second...",
+      })
+      .then((loadingElement) => {
+        loadingElement.present();
+        var ref = this;
+        const form = {
+          id_user: this.user.uid,
+          type: this.typeId,
+          collected_salary: this.monthValue,
+          month_salary_salary: this.remainMonthValue,
+        };
+        this.commonService.addRevenusFiscal(form).then((res) => {
+          ref.loadingController.dismiss();
+
+          const cardNameArr =
+            JSON.parse(localStorage.getItem("card_items")) || [];
+          const updatedCardNameArr = new Set([
+            ...cardNameArr,
+            "Revenus fiscaux",
+          ]);
+          localStorage.setItem(
+            "card_items",
+            JSON.stringify([...updatedCardNameArr])
+          );
+
+          this.router.navigate(["/profile-incoming"]);
+          //  this.navCtrl.navigateRoot(["/profile-incoming"]);
+        });
+      });
   }
 }

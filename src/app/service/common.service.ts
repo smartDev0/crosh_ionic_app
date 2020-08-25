@@ -28,6 +28,8 @@ export class CommonService {
   private revenusUserCollection: AngularFirestoreCollection<Type>;
   private socialTypeCollection: AngularFirestoreCollection<Type>;
   private revenusSocialCollection: AngularFirestoreCollection<Type>;
+  private revenusFiscalCollection: AngularFirestoreCollection<Type>;
+
   constructor(
     public afStore: AngularFirestore,
     public ngFireAuth: AngularFireAuth,
@@ -42,6 +44,7 @@ export class CommonService {
     );
     this.revenusUserCollection = afStore.collection<Type>("revenus_users");
     this.revenusSocialCollection = afStore.collection<Type>("revenus_social");
+    this.revenusFiscalCollection = afStore.collection<Type>("revenus_fiscal");
   }
   getTypeCategoires() {
     return this.typeCollection.snapshotChanges();
@@ -54,11 +57,16 @@ export class CommonService {
   addRevenusUser(form) {
     return this.revenusUserCollection.add(form);
   }
+
   getTypeSocial() {
     return this.socialTypeCollection.snapshotChanges();
   }
-  
+
   addRevenusSocial(form) {
     return this.revenusSocialCollection.add(form);
+  }
+
+  addRevenusFiscal(form) {
+    return this.revenusFiscalCollection.add(form);
   }
 }
