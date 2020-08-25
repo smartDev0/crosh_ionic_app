@@ -11,8 +11,10 @@ import { LoadingController, NavController } from "@ionic/angular";
 export class SearchComponent implements OnInit {
   public jobs;
   option1 = {
-    // loop: true,
+    loop: true,
     direction: "vertical",
+
+    slidesPerView:"1",
   };
   constructor(
     private commonService: CommonService,

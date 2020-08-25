@@ -37,20 +37,29 @@
         </ion-label>
       </ion-col>
     </ion-row> -->
+    <br>
+    <br>
     <ng-container *ngIf="jobs">
-    <ion-row class="p-top-10" *ngFor="let data of jobs;let i = index" >
-      <ion-col class="text-center" (click)="onClickMove(data.name, data.id)">
-        <div class="search-text" *ngIf="i == 4" 
+      <!-- <ion-row class="p-top-10" *ngFor="let data of jobs;let i = index">
+        <ion-col class="text-center" (click)="onClickMove(data.name, data.id)">
+          <div class="search-text" *ngIf="i == 4" 
           style="line-height: 40px;width: 100%; border-radius: 25px;border: 1px solid grey;"
           >
           {{data.name}}
         </div>
-        <ion-label class="search-text" *ngIf="i != 4"style="opacity: 0.6;" >
+          <ion-label class="search-text" *ngIf="i != 4"style="opacity: 0.6;" >
           {{data.name}}
         </ion-label>
-      </ion-col>
-    </ion-row>
-  </ng-container>
+        </ion-col>
+      </ion-row> -->
+      <ion-slides [options]="option1" *ngIf="jobs" style="width: 100%; border-radius: 25px;border: 1px solid grey;">
+        <ion-slide *ngFor="let data of jobs;let i = index" (click)="onClickMove(data.name, data.id)">
+          <div class="search-text" >
+            {{data.name}}
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </ng-container>
     <!-- <ion-slides [options]="option1" *ngIf="jobs">
       <ng-container *ngFor="let data of jobs;let i = index">
         <ion-slide>
