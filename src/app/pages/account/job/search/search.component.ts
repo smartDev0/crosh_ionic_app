@@ -10,11 +10,13 @@ import { LoadingController, NavController } from "@ionic/angular";
 })
 export class SearchComponent implements OnInit {
   public jobs;
-  option1 = {
+  option = {
     loop: true,
     direction: "vertical",
-
-    slidesPerView:"1",
+    slidesPerView: 9,
+    initialSlide: 7,
+    speed: 400,
+    // spaceBetween :"10",
   };
   constructor(
     private commonService: CommonService,
@@ -39,7 +41,6 @@ export class SearchComponent implements OnInit {
           ref.loadingController.dismiss();
         });
       });
-    console.log('search')
     // this.commonService.getJobCategories().subscribe((res) => {
     //   this.jobs = res.map((e) => {
     //     return {
