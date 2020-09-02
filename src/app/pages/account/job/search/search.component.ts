@@ -1,8 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { CommonService } from "../../../../service/common.service";
 import { Router } from "@angular/router";
 import { LoadingController, NavController } from "@ionic/angular";
-
+  import { IonSlides } from "@ionic/angular";
 @Component({
   selector: "app-search",
   templateUrl: "./search.component.html",
@@ -16,8 +16,10 @@ export class SearchComponent implements OnInit {
     slidesPerView: 9,
     initialSlide: 7,
     speed: 400,
-    // spaceBetween :"10",
   };
+  isActiveButton: boolean = false;
+  segment = 0;
+  @ViewChild("slides") slides: IonSlides;
   constructor(
     private commonService: CommonService,
     public router: Router,
@@ -51,6 +53,16 @@ export class SearchComponent implements OnInit {
     //   console.log(this.jobs);
     // });
   }
+  onSlideChanged() {
+    this.slides.getActiveIndex().then((val) => {
+      this.segment = val;
+      if (val == 16 || val == 10 || val == 14) {
+        this.isActiveButton = true;
+      } else {
+        this.isActiveButton = false;
+      }
+    });
+  }
   ionViewWillEnter() {}
   ngOnInit() {}
   ngAfterViewInit() {}
@@ -73,6 +85,19 @@ export class SearchComponent implements OnInit {
         this.router.navigate(["illness"]);
         break;
       }
+    }
+  }
+  moveNextStep(segment) {
+    switch (segment) {
+      case 16:
+        this.router.navigate(["merchant"]);
+        break;
+      case 10:
+        this.router.navigate(["unemployed"]);
+        break;
+      case 14:
+        this.router.navigate(["illness"]);
+        break;
     }
   }
 }

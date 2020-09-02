@@ -53,7 +53,7 @@
         </ion-label>
         </ion-col>
       </ion-row> -->
-      <ion-slides [options]="option" loop="true"
+      <ion-slides [options]="option" loop="true" pager="false" #slides  (ionSlideWillChange)="onSlideChanged()"
           *ngIf="jobs">
         <ion-slide *ngFor="let data of jobs;let i = index" (click)="onClickMove(data.name, data.id)">
           <div class="search-text" >
@@ -106,14 +106,13 @@
     </ion-row> -->
     <br>
     <br>
-    <br>
-    <ion-row>
+    <ion-row *ngIf="isActiveButton">
       <ion-col>
         <div class="d-flex" style="display: flex;justify-content: space-between;">
           <div class="arrow-left d-flex-v-center" routerLink="/profile-incoming" routerDirection="forward">
             <ion-icon name="arrow-back" mode="md"></ion-icon>
           </div>
-          <div class="arrow-right d-flex-v-center" routerLink="/merchant" routerDirection="forward">
+          <div class="arrow-right d-flex-v-center" (click)="moveNextStep(segment)">
             <ion-icon name="arrow-forward" mode="md"></ion-icon>
           </div>
         </div>
