@@ -10,6 +10,8 @@ import { LoadingController, NavController } from "@ionic/angular";
 })
 export class SearchComponent implements OnInit {
   public jobs;
+  public jobId: any;
+  public currentJob;
   option = {
     loop: true,
     direction: "vertical",
@@ -17,7 +19,7 @@ export class SearchComponent implements OnInit {
     initialSlide: 7,
     speed: 400,
   };
-  isActiveButton: boolean = false;
+  isActiveButton: boolean = true;
   segment = 0;
   @ViewChild("slides") slides: IonSlides;
   constructor(
@@ -52,6 +54,14 @@ export class SearchComponent implements OnInit {
     //   });
     //   console.log(this.jobs);
     // });
+    this.jobId = "DvZsOjg3pnPBl7h4GAJM";
+    this.currentJob = [
+      {
+        id: "DvZsOjg3pnPBl7h4GAJM",
+        name: "Commercant"
+      },
+    ];
+    this.onSelectChange(this.jobId)
   }
   onSlideChanged() {
     this.slides.getActiveIndex().then((val) => {
@@ -63,6 +73,31 @@ export class SearchComponent implements OnInit {
       }
     });
   }
+  onSelectChange(event) {
+    if (this.jobs) {
+      const data = this.jobs.map((item) => {
+        if (item.id == this.jobId) {
+          return item;
+        }
+      });
+
+      this.currentJob = data.filter((item) => {
+        if (item != undefined) return item;
+      });
+      if (
+        this.currentJob[0].name == "Commercant" ||
+        this.currentJob[0].name == "Sans emploi" ||
+        this.currentJob[0].name == "Longue maladie"
+      ) {
+        this.isActiveButton = true;
+      } else {
+        this.isActiveButton = false;
+      }
+    }
+    
+      console.log(event, this.currentJob);
+  }
+
   ionViewWillEnter() {}
   ngOnInit() {}
   ngAfterViewInit() {}
@@ -88,14 +123,14 @@ export class SearchComponent implements OnInit {
     }
   }
   moveNextStep(segment) {
-    switch (segment) {
-      case 16:
+    switch (segment[0].name) {
+      case "Commercant":
         this.router.navigate(["merchant"]);
         break;
-      case 10:
+      case "Sans emploi":
         this.router.navigate(["unemployed"]);
         break;
-      case 14:
+      case "Longue maladie":
         this.router.navigate(["illness"]);
         break;
     }
