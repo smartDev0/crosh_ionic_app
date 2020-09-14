@@ -8,9 +8,6 @@ import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
   styleUrls: ["./investment-more.component.scss"],
 })
 export class InvestmentMoreComponent implements OnInit {
-  public monthValue;
-  public remainMonthValue;
-  public timerValue;
   public type: any[] = [];
   public countFormArr: FormArray;
   public form: FormGroup;
@@ -19,8 +16,6 @@ export class InvestmentMoreComponent implements OnInit {
     private commonService: CommonService,
     private builder: FormBuilder
   ) {
-    this.monthValue = 220000;
-    this.remainMonthValue = 2200;
     this.form = this.builder.group({
       windows: builder.array([]),
     });
@@ -46,18 +41,13 @@ export class InvestmentMoreComponent implements OnInit {
     });
   }
   onChangeGetMonthValue(event, i) {
-    // console.log(event,i)
     this.countFormArr.at(i).get("monthValue").setValue(event.target.value);
-    // this.monthValue = event.target.value;
   }
   onChangeGetRemainValue(event, i) {
     this.countFormArr
       .at(i)
       .get("remainMonthValue")
       .setValue(event.target.value);
-  }
-  onChangeGetTimerValue(event) {
-    this.timerValue = event.target.value;
   }
   onFormSubmit(event) {
 
@@ -67,6 +57,5 @@ export class InvestmentMoreComponent implements OnInit {
     this.commonService.changeStatus();
     this.commonService.pensionActive = true;
     localStorage.setItem("pensionActive", "1");
-    // this.commonService.filter("Register click");
   }
 }
