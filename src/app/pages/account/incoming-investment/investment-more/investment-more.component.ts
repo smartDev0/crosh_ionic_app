@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { CommonService } from "src/app/service/common.service";
+import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
 @Component({
   selector: "app-investment-more",
   templateUrl: "./investment-more.component.html",
@@ -10,21 +11,56 @@ export class InvestmentMoreComponent implements OnInit {
   public monthValue;
   public remainMonthValue;
   public timerValue;
-
-  constructor(private router: Router, private commonService: CommonService) {
+  public type: any[] = [];
+  public countFormArr: FormArray;
+  public form: FormGroup;
+  constructor(
+    private router: Router,
+    private commonService: CommonService,
+    private builder: FormBuilder
+  ) {
     this.monthValue = 220000;
     this.remainMonthValue = 2200;
-    this.timerValue = 6600;
+    this.form = this.builder.group({
+      windows: builder.array([]),
+    });
   }
   ngOnInit(): void {}
-  onChangeGetMonthValue(event) {
-    this.monthValue = event.target.value;
+  ionViewWillEnter() {
+    const type = JSON.parse(localStorage.getItem("investment"));
+    this.type = type;
+    this.countFormArr = this.form.get("windows") as FormArray;
+    console.log(this.type);
+    this.type.map((item, i) => {
+      this.countFormArr.push(
+        this.builder.group({
+          monthValue: ["", Validators.required],
+          remainMonthValue: ["", Validators.required],
+          name: [""],
+          id:[""]
+        })
+      );
+      this.countFormArr.at(i).get('name').setValue(item.name);
+      this.countFormArr.at(i).get("id").setValue(item.id);
+      console.log(this.countFormArr.controls)
+    });
   }
-  onChangeGetRemainValue(event) {
-    this.remainMonthValue = event.target.value;
+  onChangeGetMonthValue(event, i) {
+    // console.log(event,i)
+    this.countFormArr.at(i).get("monthValue").setValue(event.target.value);
+    // this.monthValue = event.target.value;
+  }
+  onChangeGetRemainValue(event, i) {
+    this.countFormArr
+      .at(i)
+      .get("remainMonthValue")
+      .setValue(event.target.value);
   }
   onChangeGetTimerValue(event) {
     this.timerValue = event.target.value;
+  }
+  onFormSubmit(event) {
+
   }
   goIncomingPage() {
     this.router.navigateByUrl("/profile-incoming");

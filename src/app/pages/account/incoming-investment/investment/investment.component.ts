@@ -8,18 +8,22 @@ import { CommonService } from "src/app/service/common.service";
 })
 export class InvestmentComponent implements OnInit {
   public isOneActive: boolean = false;
-  public isSecondActive: boolean = false;
-  public isThreeActive: boolean = false;
-  public isFourActive: boolean = false;
-  public isFiveActive: boolean = false;
-  public isSixActive: boolean = false;
-  public isSevenActive: boolean = false;
-  public isEightActive: boolean = false;
-  public isNineActive: boolean = false;
-  public isTenActive: boolean = false;
   public monthValue;
   public remainMonthValue;
   public timerValue;
+  public types = [
+    { id: 1, name: "Livret A", isActive: false },
+    { id: 2, name: "LDD", isActive: false },
+    { id: 3, name: "PEL", isActive: false },
+    { id: 4, name: "Autre revenus de placements", isActive: false },
+    { id: 5, name: "LEP", isActive: false },
+    { id: 6, name: "Contrat de capitalisation", isActive: false },
+    { id: 7, name: "Assurnance", isActive: false },
+    { id: 8, name: "PEA", isActive: false },
+    { id: 9, name: "PEA-PME", isActive: false },
+    { id: 10, name: "Compte titre", isActive: false },
+  ];
+  public type: any[] = [];
 
   constructor(private router: Router, private commonService: CommonService) {
     this.monthValue = 220000;
@@ -29,38 +33,23 @@ export class InvestmentComponent implements OnInit {
 
   ngOnInit() {}
   onChangeState(id) {
-    switch (id) {
-      case 1:
-        this.isOneActive = !this.isOneActive;
-        break;
-      case 2:
-        this.isSecondActive = !this.isSecondActive;
-        break;
-      case 3:
-        this.isThreeActive = !this.isThreeActive;
-        break;
-      case 4:
-        this.isFourActive = !this.isFourActive;
-        break;
-      case 5:
-        this.isFiveActive = !this.isFiveActive;
-        break;
-      case 6:
-        this.isSixActive = !this.isSixActive;
-        break;
-      case 7:
-        this.isSevenActive = !this.isSevenActive;
-        break;
-      case 8:
-        this.isEightActive = !this.isEightActive;
-        break;
-      case 9:
-        this.isNineActive = !this.isNineActive;
-        break;
-      case 10:
-        this.isTenActive = !this.isTenActive;
-        break;
+    this.types = [...this.types].map(type => type.id === id ? { ...type, isActive: !type.isActive } : type)
+    
+    const seletedType = this.types.find(type => type.id === id);
+
+    if (seletedType.isActive) {
+      this.type = this.type.some(el => el.id === id) ? [...this.type] : [...this.type, seletedType];
+      
+    } else {
+
+      this.type = this.type.filter(el => el.id !== id);
     }
+    if (this.type.length > 0) {
+      this.isOneActive = true;
+    } else {
+      this.isOneActive = false;
+    }
+     console.log('type: ', this.type)
   }
   onChangeGetMonthValue(event) {
     this.monthValue = event.target.value;
@@ -72,6 +61,7 @@ export class InvestmentComponent implements OnInit {
     this.timerValue = event.target.value;
   }
   goIncomingPage() {
+    localStorage.setItem("investment", JSON.stringify(this.type));
     this.router.navigateByUrl("/investment-more");
     this.commonService.changeStatus();
     this.commonService.pensionActive = true;

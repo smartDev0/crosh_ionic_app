@@ -32,12 +32,13 @@ export class ProfileTaxComponent implements OnInit {
   onChangeState(id) {
     switch (id) {
       case 1:
-        this.isOneActive = !this.isOneActive;
+        this.isOneActive = true;
         this.isSecondActive = false;
         break;
       case 2:
-        this.isSecondActive = !this.isSecondActive;
+        this.isSecondActive = true;
         this.isOneActive = false;
+        this.router.navigateByUrl("/profile-incoming");
         break;
     }
   }

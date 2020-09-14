@@ -31,31 +31,13 @@ export class ReceivedComponent implements OnInit {
   onChangeState(id) {
     switch (id) {
       case 1:
-        this.isOneActive = !this.isOneActive;
+        this.isOneActive = true;
+        this.isSecondActive = false
         break;
       case 2:
-        this.isSecondActive = !this.isSecondActive;
-        break;
-      case 3:
-        this.isThreeActive = !this.isThreeActive;
-        break;
-      case 4:
-        this.isFourActive = !this.isFourActive;
-        break;
-      case 5:
-        this.isFiveActive = !this.isFiveActive;
-        break;
-      case 6:
-        this.isSixActive = !this.isSixActive;
-        break;
-      case 7:
-        this.isSevenActive = !this.isSevenActive;
-        break;
-      case 8:
-        this.isEightActive = !this.isEightActive;
-        break;
-      case 9:
-        this.isNineActive = !this.isNineActive;
+        this.isSecondActive = true;
+        this.isOneActive = false;
+        this.router.navigateByUrl("/profile-incoming");
         break;
     }
   }

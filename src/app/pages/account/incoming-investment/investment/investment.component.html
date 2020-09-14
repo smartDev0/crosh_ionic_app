@@ -27,86 +27,16 @@
     </ion-row>
     <br>
     <ion-row>
-      <ion-col size="6">
-        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(1)" *ngIf="!isOneActive">
-          Livret A
-        </div>
-        <div class="supplyment-checkbox active d-flex-v-center" (click)="onChangeState(1)" *ngIf="isOneActive">
-           Livret A
-        </div>
-      </ion-col>
-      <ion-col size="6">
-        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(2)" *ngIf="!isSecondActive">
-          LDD
-        </div>
-        <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(2)" *ngIf="isSecondActive">
-          LDD
-        </div>
-      </ion-col>
-      <ion-col size="6">
-        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(3)" *ngIf="!isThreeActive">
-         PEL
-        </div>
-        <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(3)" *ngIf="isThreeActive">
-          PEL
-        </div>
-      </ion-col>
-      <ion-col size="6">
-        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(6)" *ngIf="!isFourActive">
-          Autre revenus de placements
-        </div>
-        <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(6)" *ngIf="isFourActive">
-          Autre revenus de placements
-        </div>
-      </ion-col>
-      <ion-col size="6">
-        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(5)" *ngIf="!isFiveActive">
-          LEP
-        </div>
-        <div class="supplyment-checkbox active d-flex-v-center" (click)="onChangeState(5)" *ngIf="isFiveActive">
-          LEP
-        </div>
-      </ion-col>
-      <ion-col size="6">
-        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(6)" *ngIf="!isSixActive">
-          Contrat de capitalisation
-        </div>
-        <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(6)" *ngIf="isSixActive">
-         Contrat de capitalisation
-        </div>
-      </ion-col>
-      <ion-col size="6">
-        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(7)" *ngIf="!isSevenActive">
-         Assurnance
-        </div>
-        <div class="supplyment-checkbox active d-flex-v-center" (click)="onChangeState(7)" *ngIf="isSevenActive">
-          Assurnance
-        </div>
-      </ion-col>
-      <ion-col size="6">
-        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(8)" *ngIf="!isEightActive">
-          PEA
-        </div>
-        <div class="supplyment-checkbox active d-flex-v-center" (click)="onChangeState(8)" *ngIf="isEightActive">
-         PEA
-        </div>
-      </ion-col>
-      <ion-col size="6">
-        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(9)" *ngIf="!isNineActive">
-          PEA-PME
-        </div>
-        <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(9)" *ngIf="isNineActive">
-         PEA-PME
-        </div>
-      </ion-col>
-      <ion-col size="6">
-        <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(10)" *ngIf="!isTenActive">
-          Compte titre
-        </div>
-        <div class="supplyment-checkbox d-flex-v-center active" (click)="onChangeState(10)" *ngIf="isTenActive">
-         Compte titre
-        </div>
-      </ion-col>
+      <ng-container *ngFor="let data of types;index as i;">
+        <ion-col size="6">
+          <div class="supplyment-checkbox d-flex-v-center" (click)="onChangeState(data.id)" *ngIf="!data.isActive">
+            {{ data.name }}
+          </div>
+          <div class="supplyment-checkbox active d-flex-v-center" (click)="onChangeState(data.id)" *ngIf="data.isActive">
+            {{ data.name }}
+          </div>
+        </ion-col>
+      </ng-container>
     </ion-row>
     <ion-row>
       <ion-col class="text-center">

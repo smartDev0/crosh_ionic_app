@@ -14,7 +14,7 @@
   <br>
   <ion-row *ngIf="types">
     <ion-col size="6" *ngFor="let data of types; let i = index">
-      <div class="supplyment-checkbox d-flex-v-center" [class.active]="selectedItem == i"  (click)="onChangeState(i+1, data.id)" id="active_{{i}}" >
+      <div class="supplyment-checkbox d-flex-v-center" [class.active]="selectedItem == i"  (click)="onChangeState(i+1, data.id, data.name)" id="active_{{i}}" >
         {{data.name}}
       </div>
       <!-- <div class="supplyment-checkbox active d-flex-v-center" (click)="onChangeState(i+1)" id="active_{{i}}" *ngIf="isOneActive">
@@ -46,11 +46,11 @@
       </div>
     </ion-col> -->
   </ion-row>
-  <div style="padding: 15px;" *ngIf="isOneActive ">
+  <div style="padding: 15px;" *ngIf="isOneActive || isSecondActive||isThreeActive||isFourActive">
     <ion-row>
       <ion-col class="text-center">
         <ion-label class="form-title">
-          Revenu CAF:
+          Revenu {{name}}:
         </ion-label>
       </ion-col>
     </ion-row>
@@ -116,7 +116,7 @@
     <br>
   </div>
  
-  <ion-row *ngIf="isOneActive">
+  <ion-row *ngIf="isOneActive || isSecondActive||isThreeActive||isFourActive">
     <ion-col>
       <div class="d-flex" style="display: flex;justify-content: space-between;">
         <div class="arrow-left d-flex-v-center" routerLink="/profile-incoming" routerDirection="forward">

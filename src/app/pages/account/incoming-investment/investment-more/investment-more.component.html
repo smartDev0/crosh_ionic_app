@@ -2,137 +2,102 @@
   <br>
   <br>
   <div class="d-flex-center">
-    <div class="d-flex-v-center step-box-active"> <ion-icon name="checkmark"></ion-icon></div>
+    <div class="d-flex-v-center step-box-active">
+      <ion-icon name="checkmark"></ion-icon>
+    </div>
     <div class="d-flex-v-center">
       <div class="divider "></div>
     </div>
-    <div class="d-flex-v-center step-box-active"> <ion-icon name="checkmark"></ion-icon></div>
+    <div class="d-flex-v-center step-box-active">
+      <ion-icon name="checkmark"></ion-icon>
+    </div>
     <div class="d-flex-v-center">
       <div class="divider "></div>
     </div>
     <div class="d-flex-v-center step-box-active">3</div>
   </div>
-  <div style="padding: 10px 15px;">
-    <ion-row>
-      <ion-col class="text-center">
-        <ion-label class="form-title">
-          Dites-nous en plus sur
-          <div>
-            vos placements
+  <form [formGroup]="form" (ngSubmit)="onFormSubmit($event)">
+    <div style="padding: 10px 15px;">
+      <ion-row>
+        <ion-col class="text-center">
+          <ion-label class="form-title">
+            Dites-nous en plus sur
+            <div>
+              vos placements
+            </div>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ng-container *ngIf="countFormArr">
+        <ng-contrainer *ngFor="let windowsGroup of countFormArr.controls ; let i = index" [formGroup]="windowsGroup">
+          <div style="padding: 15px;">
+            <ion-row>
+              <ion-col class="text-center">
+                <ion-label class="investment-label">{{windowsGroup.value.name}}
+                </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="text-center">
+                <ion-label class="incoming-text">Revenus mensuels ?</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="text-center">
+                <ion-label class="incoming-value">
+                  {{windowsGroup.value.monthValue !=''?windowsGroup.value.monthValue:0 }} €
+                </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-range min="0" max="360000" class="range" step="100"
+                  formControlName="monthValue"
+                  (ionChange)="onChangeGetMonthValue($event, i)">
+                </ion-range>
+              </ion-col>
+            </ion-row>
+            <br>
+            <ion-row>
+              <ion-col class="text-center">
+                <ion-label class="incoming-text">Revenus annuels ?</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="text-center">
+                <ion-label class="incoming-value">
+                   {{windowsGroup.value.remainMonthValue !=''?windowsGroup.value.remainMonthValue:0 }} €
+                </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-range min="0" max="4400" class="range" step="100"
+                 formControlName="remainMonthValue"
+                  (ionChange)="onChangeGetRemainValue($event ,i)">
+                </ion-range>
+              </ion-col>
+            </ion-row>
+            <br>
           </div>
-        </ion-label>
-      </ion-col>
-    </ion-row>
-    <div style="padding: 15px;">
-      <ion-row>
-        <ion-col class="text-center">
-          <ion-label class="investment-label">LIVRET A
-          </ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="text-center">
-          <ion-label class="incoming-text">Revenus mensuels ?</ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="text-center">
-          <ion-label class="incoming-value">
-            {{monthValue}} €
-          </ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-range min="0" max="360000" class="range" step="100" value="{{monthValue}}"
-            (ionChange)="onChangeGetMonthValue($event)">
-          </ion-range>
-        </ion-col>
-      </ion-row>
-      <br>
-      <ion-row>
-        <ion-col class="text-center">
-          <ion-label class="incoming-text">Revenus annuels ?</ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="text-center">
-          <ion-label class="incoming-value">
-            {{remainMonthValue}} €
-          </ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-range min="0" max="4400" class="range" step="100" value="{{remainMonthValue}}"
-            (ionChange)="onChangeGetRemainValue($event)">
-          </ion-range>
-        </ion-col>
-      </ion-row>
-      <br>
-    </div>
-    <div style="padding: 15px;">
-      <ion-row>
-        <ion-col class="text-center">
-          <ion-label class="investment-label">ASSURANCE VIE
-          </ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="text-center">
-          <ion-label class="incoming-text">Revenus mensuels ?</ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="text-center">
-          <ion-label class="incoming-value">
-            {{monthValue}} €
-          </ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-range min="0" max="360000" class="range" step="100" value="{{monthValue}}"
-            (ionChange)="onChangeGetMonthValue($event)">
-          </ion-range>
-        </ion-col>
-      </ion-row>
-      <br>
-      <ion-row>
-        <ion-col class="text-center">
-          <ion-label class="incoming-text">Revenus annuels ?</ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="text-center">
-          <ion-label class="incoming-value">
-            {{remainMonthValue}} €
-          </ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-range min="0" max="4400" class="range" step="100" value="{{remainMonthValue}}"
-            (ionChange)="onChangeGetRemainValue($event)">
-          </ion-range>
-        </ion-col>
-      </ion-row>
-      <br>
-    </div>
-    <ion-row >
-      <ion-col>
-        <div class="d-flex" style="display: flex;justify-content: space-between;">
-          <div class="arrow-left d-flex-v-center" routerLink="/investment" routerDirection="forward">
-            <ion-icon name="arrow-back" mode="md"></ion-icon>
-          </div>
-          <div class="arrow-right d-flex-v-center" (click)="goIncomingPage()">
-           <ion-icon name="checkmark" mode="md"></ion-icon>
-          </div>
-        </div>
-      </ion-col>
-    </ion-row>
-    <br>
-    <br>
-  </div>
+        </ng-contrainer>
+      </ng-container>
 
+      <ion-row>
+        <ion-col>
+          <div class="d-flex" style="display: flex;justify-content: space-between;">
+            <div class="arrow-left d-flex-v-center" routerLink="/investment" routerDirection="forward">
+              <ion-icon name="arrow-back" mode="md"></ion-icon>
+            </div>
+            <div class="arrow-right d-flex-v-center" (click)="goIncomingPage()">
+              <ion-icon name="checkmark" mode="md"></ion-icon>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <br>
+      <br>
+    </div>
+  </form>
 </ion-content>

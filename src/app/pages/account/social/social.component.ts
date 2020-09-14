@@ -12,15 +12,11 @@ export class SocialComponent implements OnInit {
   public isSecondActive: boolean = false;
   public isThreeActive: boolean = false;
   public isFourActive: boolean = false;
-  public isFiveActive: boolean = false;
-  public isSixActive: boolean = false;
-  public isSevenActive: boolean = false;
-  public isEightActive: boolean = false;
-  public isNineActive: boolean = false;
   public collectedValue;
   public remainMonthValue;
   public timerValue;
   public types;
+  public name;
   selectedItem: number;
   public typeId;
   public user;
@@ -56,21 +52,23 @@ export class SocialComponent implements OnInit {
   }
 
   ngOnInit() {}
-  onChangeState(id, typeId) {
+  onChangeState(id, typeId, name) {
+    console.log(id, name);
+    this.name = name;
     this.selectedItem = id - 1;
     this.categoryId = typeId;
     switch (id) {
       case 1:
-        this.isOneActive = !this.isOneActive;
+        this.isOneActive = true;
         break;
       case 2:
         this.isSecondActive = true;
         break;
       case 3:
-        this.isThreeActive = !this.isThreeActive;
+        this.isThreeActive = true;
         break;
       case 4:
-        this.isFourActive = !this.isFourActive;
+        this.isFourActive = true;
         break;
     }
   }
